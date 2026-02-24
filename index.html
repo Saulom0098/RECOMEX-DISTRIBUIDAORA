@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RECOMEX LTDA - Distribuidora de Suprimentos Comerciais</title>
+    <meta
+      name="description"
+      content="RECOMEX LTDA - Distribuidora de suprimentos comerciais em São Luís - MA. Bobinas, etiquetas, máquinas, equipamentos e muito mais para o seu negócio."
+    />
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0f172a", // azul escuro elegante
+              softBlack: "#111827", // preto suave
+              lightGray: "#e5e7eb",
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Fonte moderna -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-softBlack font-sans">
+    <!-- Header fixo -->
+    <header
+      class="fixed top-0 inset-x-0 z-40 bg-white/90 backdrop-blur border-b border-lightGray"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <img
+            src="assets/logo-recomex.png"
+            alt="RECOMEX LTDA - Distribuidora de Suprimentos Comerciais"
+            class="h-8 w-auto object-contain"
+          />
+          <div class="leading-tight hidden sm:block">
+            <div class="text-xs uppercase tracking-[0.18em] text-gray-500">
+              RECOMEX LTDA
+            </div>
+            <div class="text-[11px] text-gray-400">
+              Distribuidora de Suprimentos Comerciais
+            </div>
+          </div>
+        </div>
+        <!-- Menu desktop -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm">
+          <a href="#inicio" class="text-gray-600 hover:text-primary transition-colors">Início</a>
+          <a href="#sobre" class="text-gray-600 hover:text-primary transition-colors">Sobre</a>
+          <a href="#produtos" class="text-gray-600 hover:text-primary transition-colors">Produtos</a>
+          <a href="#carrinho" class="text-gray-600 hover:text-primary transition-colors">Carrinho</a>
+          <a href="#contato" class="text-gray-600 hover:text-primary transition-colors">Contato</a>
+        </nav>
+        <!-- Ações -->
+        <div class="flex items-center space-x-4">
+          <!-- Carrinho -->
+          <button
+            id="cart-button"
+            class="relative flex items-center space-x-2 text-sm text-softBlack hover:text-primary transition-colors"
+          >
+            <span class="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-lightGray">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                class="w-4 h-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M3 3h2l.88 4.39a1 1 0 0 0 .98.8h10.68a1 1 0 0 0 .98-.8L20 6H7"
+                />
+                <circle cx="10" cy="19" r="1.3" />
+                <circle cx="17" cy="19" r="1.3" />
+              </svg>
+              <span
+                id="cart-count"
+                class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-[3px] rounded-full bg-primary text-[10px] text-white flex items-center justify-center"
+              >
+                0
+              </span>
+            </span>
+            <span class="hidden sm:inline text-xs uppercase tracking-[0.18em]">
+              Cotação
+            </span>
+          </button>
+          <!-- Botão orçamento topo -->
+          <a
+            href="#form-orcamento"
+            class="hidden sm:inline-flex items-center justify-center h-9 px-5 rounded-full bg-primary text-white text-xs font-medium tracking-wide hover:bg-black transition-colors"
+          >
+            Solicitar Orçamento
+          </a>
+          <!-- Menu mobile -->
+          <button
+            id="menu-toggle"
+            class="md:hidden inline-flex items-center justify-center h-9 w-9 rounded-full border border-lightGray text-softBlack hover:text-primary hover:border-primary transition-colors"
+            aria-label="Abrir menu"
+          >
+            <span id="menu-icon-open">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+            </span>
+            <span id="menu-icon-close" class="hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+      <!-- Menu mobile dropdown -->
+      <nav
+        id="mobile-menu"
+        class="md:hidden max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-4 space-y-2 text-sm hidden"
+      >
+        <a href="#inicio" class="block py-1 text-gray-700">Início</a>
+        <a href="#sobre" class="block py-1 text-gray-700">Sobre</a>
+        <a href="#produtos" class="block py-1 text-gray-700">Produtos</a>
+        <a href="#carrinho" class="block py-1 text-gray-700">Carrinho</a>
+        <a href="#contato" class="block py-1 text-gray-700">Contato</a>
+        <a
+          href="#form-orcamento"
+          class="inline-flex items-center justify-center h-9 px-5 rounded-full bg-primary text-white text-xs font-medium tracking-wide mt-2"
+        >
+          Solicitar Orçamento
+        </a>
+      </nav>
+    </header>
+
+    <main class="pt-20">
+      <!-- Hero -->
+      <section id="inicio" class="border-b border-lightGray">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+          <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div class="space-y-8">
+              <div class="space-y-4">
+                <p class="text-xs uppercase tracking-[0.28em] text-gray-400">
+                  São Luís – MA
+                </p>
+                <h1
+                  class="text-3xl sm:text-4xl lg:text-[2.7rem] leading-tight font-semibold text-primary"
+                >
+                  A Maior Distribuidora de Bobinas e Etiquetas de São Luís
+                </h1>
+                <p class="text-sm sm:text-[15px] text-gray-600 max-w-xl leading-relaxed">
+                  Fornecendo qualidade, variedade e atendimento especializado para comércios,
+                  mercados, farmácias e empresas em toda a região de São Luís e arredores.
+                </p>
+              </div>
+              <div class="flex flex-wrap items-center gap-3">
+                <a
+                  href="#produtos"
+                  class="inline-flex items-center justify-center h-10 px-7 rounded-full bg-primary text-white text-xs font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+                >
+                  Ver Produtos
+                </a>
+                <a
+                  href="#form-orcamento"
+                  class="inline-flex items-center justify-center h-10 px-7 rounded-full border border-softBlack text-softBlack text-xs font-medium tracking-[0.16em] uppercase hover:bg-softBlack hover:text-white transition-colors"
+                >
+                  Solicitar Orçamento
+                </a>
+              </div>
+              <div class="grid grid-cols-3 gap-6 text-[11px] text-gray-500">
+                <div>
+                  <div class="text-xs font-semibold text-softBlack">Estoque permanente</div>
+                  <p class="mt-1 leading-relaxed">
+                    Linha completa de bobinas, etiquetas, máquinas e suprimentos para o dia a dia do seu negócio.
+                  </p>
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-softBlack">Atendimento ágil</div>
+                  <p class="mt-1 leading-relaxed">
+                    Cotação rápida, condições personalizadas e suporte próximo para cada cliente.
+                  </p>
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-softBlack">Distribuição corporativa</div>
+                  <p class="mt-1 leading-relaxed">
+                    Fornecimento para comércios, redes de varejo, farmácias, indústrias e escritórios.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Imagem hero (composição de bobinas, impressora e etiquetadora) -->
+            <div class="relative lg:pl-6">
+              <div
+                class="aspect-square max-w-sm mx-auto bg-white border border-lightGray rounded-2xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/Copilot_20260224_163505-removebg-preview.png"
+                  alt="Composição de bobinas térmicas em estúdio com fundo totalmente branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sobre -->
+      <section id="sobre" class="border-b border-lightGray">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          <div class="grid lg:grid-cols-[1.1fr,1.3fr] gap-12 lg:gap-16">
+            <div class="space-y-4">
+              <p class="text-xs uppercase tracking-[0.28em] text-gray-400">Sobre a distribuidora</p>
+              <h2 class="text-2xl sm:text-[1.6rem] font-semibold text-primary">
+                Estrutura focada em abastecer o varejo com segurança e previsibilidade
+              </h2>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                A RECOMEX LTDA é uma distribuidora especializada em suprimentos comerciais com
+                foco em bobinas, etiquetas, máquinas e acessórios para automação comercial.
+                Atuamos com estoque permanente, atendimento próximo e soluções sob medida para
+                cada operação.
+              </p>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                Localizada em São Luís – MA, a RECOMEX atende mercados, farmácias, lojas de
+                conveniência, atacarejos, escritórios, distribuidoras e empresas de diversos
+                segmentos que precisam de confiabilidade no fornecimento de insumos.
+              </p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6 text-xs text-gray-600">
+              <div class="space-y-4">
+                <div class="border border-lightGray rounded-xl p-4">
+                  <div class="text-[11px] font-semibold text-softBlack uppercase tracking-[0.16em]">
+                    Estoque permanente
+                  </div>
+                  <p class="mt-2 leading-relaxed">
+                    Linha contínua de bobinas térmicas, etiquetas, sacos, filmes, máquinas e
+                    suprimentos críticos para que seu PDV não pare.
+                  </p>
+                </div>
+                <div class="border border-lightGray rounded-xl p-4">
+                  <div class="text-[11px] font-semibold text-softBlack uppercase tracking-[0.16em]">
+                    Atendimento ágil
+                  </div>
+                  <p class="mt-2 leading-relaxed">
+                    Cotação rápida, suporte consultivo e acompanhamento próximo da sua demanda,
+                    garantindo previsibilidade de abastecimento.
+                  </p>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <div class="border border-lightGray rounded-xl p-4">
+                  <div class="text-[11px] font-semibold text-softBlack uppercase tracking-[0.16em]">
+                    Negociação personalizada
+                  </div>
+                  <p class="mt-2 leading-relaxed">
+                    Condições comerciais adequadas ao perfil de cada cliente, volume de compra e
+                    necessidade operacional, sempre com foco em relacionamento de longo prazo.
+                  </p>
+                </div>
+                <div class="border border-lightGray rounded-xl p-4">
+                  <div class="text-[11px] font-semibold text-softBlack uppercase tracking-[0.16em]">
+                    Localização estratégica
+                  </div>
+                  <p class="mt-2 leading-relaxed">
+                    Base em São Luís – MA, com atendimento dedicado para empresas da capital e
+                    região metropolitana, garantindo rapidez e proximidade logística.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Produtos -->
+      <section id="produtos" class="border-b border-lightGray">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          <div class="flex items-end justify-between mb-10">
+            <div>
+              <p class="text-xs uppercase tracking-[0.28em] text-gray-400">Portfólio</p>
+              <h2 class="text-2xl sm:text-[1.6rem] font-semibold text-primary mt-2">
+                Produtos consolidados para o seu negócio
+              </h2>
+              <p class="mt-3 text-sm text-gray-600 max-w-xl">
+                Navegue pelos principais grupos de produtos da RECOMEX. Selecione o que precisa,
+                adicione à sua lista de cotação e envie diretamente para nosso time comercial.
+              </p>
+            </div>
+            <div class="hidden sm:flex items-center gap-3 text-[11px] text-gray-500">
+              <span class="inline-flex h-2 w-2 rounded-full bg-primary"></span>
+              <span>Produtos ilustrativos, sem exibição de preços ou compra online.</span>
+            </div>
+          </div>
+
+          <!-- Grid de produtos -->
+          <div
+            class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            id="product-grid"
+          >
+            <!-- Cada card é definido também em JavaScript para o carrinho.
+                 O atributo data-product-id deve ser único. -->
+
+            <!-- Bobinas Térmicas -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="bobinas-termicas"
+              data-product-name="Bobinas Térmicas"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/bobinas-termicas.jpg"
+                  alt="Bobinas Térmicas em estúdio com fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Bobinas Térmicas</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Bobinas térmicas para impressoras fiscais e não fiscais, além de PDVs em geral, com alto padrão de impressão.
+                  <span class="block mt-1 text-[11px] text-gray-500">
+                    Tamanhos disponíveis: 57x30, 57x40, 57x45, 57x50, 57x80, 80x40, 80x80.
+                  </span>
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+            <!-- Bobina Apergaminhada 57x30 -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="bobina-apergaminhada-57x30"
+              data-product-name="Bobina Apergaminhada 57x30"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/bobina-apergaminhada-57x30.jpg"
+                  alt="Bobina apergaminhada 57x30 em fundo totalmente branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Bobina Apergaminhada 57x30</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Ideal para impressões em equipamentos específicos que utilizam papel apergaminhado para melhor durabilidade.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Etiquetas Térmicas -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="etiquetas-termicas"
+              data-product-name="Etiquetas Térmicas"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/etiquetas-termicas.jpg"
+                  alt="Rolos de etiquetas térmicas brancas alinhados em estúdio"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Etiquetas Térmicas</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Etiquetas térmicas para balanças, impressoras e sistemas de automação com excelente definição de impressão.
+                  <span class="block mt-1 text-[11px] text-gray-500">
+                    Tamanhos disponíveis (conforme aplicação): 40x40, 60x40, 60x75, 60 contínua e 60x40 BOPP.
+                  </span>
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Etiquetas de Gôndola -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="etiquetas-gondola"
+              data-product-name="Etiquetas de Gôndola"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/etiquetas-gondola.jpg"
+                  alt="Etiquetas de gôndola sobre prateleiras brancas em estúdio"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Etiquetas de Gôndola</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Etiquetas específicas para precificação e identificação em gôndolas e expositores de loja.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Etiqueta MX 5.500 -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="etiqueta-mx5500"
+              data-product-name="Etiqueta MX 5.500"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/etiqueta-mx-5500.jpg"
+                  alt="Etiquetas para etiquetadora MX 5.500 sobre fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Etiqueta MX 5.500</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Etiquetas compatíveis com etiquetadoras MX 5.500, ideais para precificação rápida no varejo.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Etiquetas Duas Carreiras -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="etiquetas-duas-carreiras"
+              data-product-name="Etiquetas Duas Carreiras"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/etiquetas-duas-carreiras.jpg"
+                  alt="Etiquetas em duas carreiras alinhadas sobre fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Etiquetas Duas Carreiras</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Etiquetas em duas carreiras para aplicações especiais, permitindo maior volume de informações.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="etiquetas-duas-carreiras"
+              data-product-name="Etiquetas Duas Carreiras"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/etiqueta-tres-carreiras.jpg"
+                  alt="Etiquetas em duas carreiras alinhadas sobre fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Etiquetas tres Carreiras</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Etiquetas em tres carreiras para aplicações especiais, permitindo maior volume de informações.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+            <!-- Etiquetadora MX 5.500 -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="etiquetadora-mx5500"
+              data-product-name="Etiquetadora MX 5.500"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/etiquetadora-mx-5500.jpg"
+                  alt="Etiquetadora MX 5.500 em estúdio com fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Etiquetadora MX 5.500</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Equipamento para etiquetagem e precificação manual, amplamente utilizado no varejo.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Máquinas MX 23x26 / 28x16 -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="maquinas-mx-23x26-28x16"
+              data-product-name="Máquinas MX 23x26 / 28x16"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/maquinas-mx-23x26-28x16.jpg"
+                  alt="Máquinas MX em diferentes tamanhos sobre fundo branco minimalista"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Máquinas MX 23x26 / 28x16</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Máquinas de etiquetagem em diferentes configurações, adaptadas a múltiplos padrões de etiqueta.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Impressora Elgin I8 -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="impressora-elgin-i8"
+              data-product-name="Impressora Elgin I8"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/impressora-elgin-i8.jpg"
+                  alt="Impressora Elgin I8 em estúdio com fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Impressora Elgin I8</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Impressora de etiquetas robusta, ideal para ambientes com alta demanda de impressão.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Impressora L42 Pro Full -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="impressora-l42-pro-full"
+              data-product-name="Impressora L42 Pro Full"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/impressora-l42-pro-full.jpg"
+                  alt="Impressora L42 Pro Full em fotografia de produto com fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Impressora L42 Pro Full</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Solução completa de impressão com alta performance e qualidade para operações intensivas.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Impressora Térmica I9 -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="impressora-termica-i9"
+              data-product-name="Impressora Térmica I9"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/impressora-termica-i9.jpg"
+                  alt="Impressora térmica I9 em ângulo lateral com fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Impressora Térmica I9</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Impressora térmica compacta para emissão de cupons e comprovantes com excelente desempenho.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Leitores Código de Barras -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="leitores-codigo-barras"
+              data-product-name="Leitores de Código de Barras"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/leitores-codigo-barras.jpg"
+                  alt="Leitores de código de barras em diferentes formatos sobre fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Leitores Código de Barras</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Linha de leitores para checkout, estoque e conferência, com alta velocidade e precisão.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Calculadora MR 6125 -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="calculadora-mr-6125"
+              data-product-name="Calculadora MR 6125"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/calculadora-mr-6125.jpg"
+                  alt="Calculadora MR 6125 com rolo de papel em fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Calculadora MR 6125</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Calculadora com impressão em papel, ideal para conferência e registro de operações.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Peças MX 5.500 (consolidado) -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="pecas-mx-5500"
+              data-product-name="Peças MX 5.500"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/pecas-mx-5500.jpg"
+                  alt="Conjunto de peças para MX 5.500 organizadas em fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Peças MX 5.500</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Conjunto de peças e componentes para manutenção de etiquetadoras MX 5.500, garantindo maior vida útil do equipamento.
+                  <span class="block mt-1 text-[11px] text-gray-500">
+                    Produto consolidado com todas as peças em um único cadastro para cotação.
+                  </span>
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Sacos de Feirinha -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="sacos-de-feirinha"
+              data-product-name="Sacos de Feirinha"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/sacos-de-feirinha.jpg"
+                  alt="Sacos plásticos tipo feirinha empilhados em fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Sacos de Feirinha</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Sacos plásticos tipo feirinha para uso em supermercados, hortifrutis e comércios em geral.
+                  <span class="block mt-1 text-[11px] text-gray-500">
+                    Tamanhos disponíveis conforme necessidade da operação.
+                  </span>
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Filme PVC -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="filme-pvc"
+              data-product-name="Filme PVC"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/filme-pvc.jpg"
+                  alt="Rolos de filme PVC transparente organizados em fundo branco minimalista"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Filme PVC</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Filme PVC para embalar e proteger alimentos e produtos, com ótima aderência e transparência.
+                  <span class="block mt-1 text-[11px] text-gray-500">
+                    Tamanhos e espessuras disponíveis conforme demanda.
+                  </span>
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Suporte de Saco -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="suporte-de-saco"
+              data-product-name="Suporte de Saco"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/suporte-de-saco.jpg"
+                  alt="Suporte metálico para sacos de feirinha em fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Suporte de Saco</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Estrutura para fixação e organização de sacos de feirinha em checkout e áreas de embalagem.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Toner e Cartuchos -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="toner-cartuchos"
+              data-product-name="Toner e Cartuchos"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/toner-cartuchos.jpg"
+                  alt="Toners e cartuchos alinhados com fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Toner e Cartuchos</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Suprimentos de impressão para impressoras a laser e jato de tinta, garantindo nitidez e durabilidade.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Tinteiro IR40 / IR40T -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="tinteiro-ir40"
+              data-product-name="Tinteiro IR40 / IR40T"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/tinteiro-ir40.jpg"
+                  alt="Cartuchos de tinteiro IR40 e IR40T em linha sobre fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Tinteiro IR40 / IR40T</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Tinteiros para calculadoras e equipamentos específicos, com impressão nítida e duradoura.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Refil Epson -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="refil-epson"
+              data-product-name="Refil Epson"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/refil-epson.jpg"
+                  alt="Frascos de refil Epson alinhados em estúdio com fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Refil Epson</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Refis de tinta para impressoras Epson, com cores vivas e rendimento estendido.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Ribbon 110x74 -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="ribbon-110x74"
+              data-product-name="Ribbon 110x74"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/ribbon-110x74.jpg"
+                  alt="Ribbon 110x74 enrolado em fotografia de estúdio com fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Ribbon 110x74</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Ribbon para impressão térmica transfer, garantindo resistência e legibilidade em etiquetas.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Alça de Segurança -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="alca-de-seguranca"
+              data-product-name="Alça de Segurança"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/alca-de-seguranca.jpg"
+                  alt="Alças de segurança organizadas em fundo branco com iluminação suave"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Alça de Segurança</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Alças de segurança para lacração e identificação de volumes e mercadorias.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Banda Numérica MX -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="banda-numerica-mx"
+              data-product-name="Banda Numérica MX"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/banda-numerica-mx.jpg"
+                  alt="Banda numérica para equipamentos MX em fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Banda Numérica MX</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Banda numérica para reposição em etiquetadoras e equipamentos MX.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Creme de Macaxeira -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="creme-macaxeira"
+              data-product-name="Creme de Macaxeira"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/creme-macaxeira.jpg"
+                  alt="Embalagem de creme de macaxeira centralizada em fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Creme de Macaxeira</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Creme de macaxeira pronto para uso, ideal para produção alimentícia e cozinhas profissionais.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Massa de Macaxeira -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="massa-macaxeira"
+              data-product-name="Massa de Macaxeira"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/massa-macaxeira.jpg"
+                  alt="Embalagens de massa de macaxeira alinhadas sobre fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Massa de Macaxeira</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Massa de macaxeira para preparo de pratos típicos e receitas profissionais.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Massa Mimosa -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="massa-mimosa"
+              data-product-name="Massa Mimosa"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/massa-mimosa.jpg"
+                  alt="Embalagens de massa Mimosa em composição organizada com fundo branco"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Massa Mimosa</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Massa Mimosa para preparo de receitas, fornecida para comércios e operações alimentícias.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Fita para Calculadora -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="fita-calculadora"
+              data-product-name="Fita para Calculadora"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/fita-calculadora.jpg"
+                  alt="Rolos de fita para calculadora empilhados com fundo branco neutro"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Fita para Calculadora</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Fitas para impressão em calculadoras, com papel de alta qualidade e boa legibilidade.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+
+            <!-- Rolo de Impressão MX -->
+            <article
+              class="border border-lightGray rounded-2xl p-4 flex flex-col space-y-4"
+              data-product-id="rolo-impressao-mx"
+              data-product-name="Rolo de Impressão MX"
+            >
+              <div
+                class="aspect-square bg-white border border-lightGray rounded-xl flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  src="assets/rolo-impressao-mx.jpg"
+                  alt="Rolo de impressão para equipamentos MX em fundo branco de estúdio"
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="text-sm font-semibold text-softBlack">Rolo de Impressão MX</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Rolo de impressão para equipamentos MX, assegurando nitidez e durabilidade em etiquetas e marcações.
+                </p>
+              </div>
+              <button
+                class="add-to-quote inline-flex items-center justify-center h-9 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+              >
+                Adicionar à Cotação
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Carrinho de Cotação -->
+      <section id="carrinho" class="border-b border-lightGray bg-gray-50/40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          <div class="flex items-start justify-between gap-8 mb-8">
+            <div>
+              <p class="text-xs uppercase tracking-[0.28em] text-gray-400">Carrinho de cotação</p>
+              <h2 class="text-2xl sm:text-[1.6rem] font-semibold text-primary mt-2">
+                Liste os produtos que deseja orçar
+              </h2>
+              <p class="mt-3 text-sm text-gray-600 max-w-xl">
+                Adicione produtos do catálogo e envie sua lista diretamente para nosso WhatsApp
+                ou e-mail. Não há valores nem compra online: toda negociação é feita
+                individualmente pelo time comercial.
+              </p>
+            </div>
+            <div class="hidden md:block text-[11px] text-gray-500 text-right">
+              <p>Sem quantidade, sem preços, sem pagamento online.</p>
+              <p class="mt-1">Apenas uma cotação personalizada para o seu CNPJ.</p>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-[minmax(0,1.5fr),minmax(0,1fr)] gap-8 items-start">
+            <!-- Lista de itens -->
+            <div class="border border-lightGray bg-white rounded-2xl p-4 sm:p-5">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="text-sm font-semibold text-softBlack">
+                  Itens selecionados
+                </h3>
+                <span
+                  id="cart-empty-label"
+                  class="text-[11px] text-gray-400"
+                >
+                  Nenhum produto na cotação ainda.
+                </span>
+              </div>
+              <ul
+                id="cart-items"
+                class="divide-y divide-lightGray text-sm"
+              ></ul>
+            </div>
+
+            <!-- Ações de envio -->
+            <div class="space-y-4">
+              <div class="border border-lightGray bg-white rounded-2xl p-4 sm:p-5 space-y-4">
+                <h3 class="text-sm font-semibold text-softBlack">
+                  Enviar lista de cotação
+                </h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  Revise os produtos adicionados e escolha como deseja enviar sua solicitação.
+                  A equipe RECOMEX retornará com orçamento personalizado, prazos e condições comerciais.
+                </p>
+                <div class="space-y-2">
+                  <button
+                    id="send-whatsapp"
+                    class="w-full inline-flex items-center justify-center h-10 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+                  >
+                    Enviar via WhatsApp
+                  </button>
+                  <button
+                    id="send-email"
+                    class="w-full inline-flex items-center justify-center h-10 px-4 rounded-full border border-softBlack text-softBlack text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-softBlack hover:text-white transition-colors"
+                  >
+                    Enviar por e-mail
+                  </button>
+                </div>
+                <p class="text-[11px] text-gray-400 leading-relaxed">
+                  A mensagem será gerada automaticamente com a lista dos produtos selecionados.
+                  Você poderá complementar com observações diretamente no WhatsApp ou e-mail.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contato + Mapa + Formulário -->
+      <section id="contato" class="border-b border-lightGray">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          <div class="grid lg:grid-cols-[minmax(0,1.1fr),minmax(0,1.3fr)] gap-12 lg:gap-16 items-start">
+            <!-- Dados de contato e mapa -->
+            <div class="space-y-6">
+              <div class="space-y-3">
+                <p class="text-xs uppercase tracking-[0.28em] text-gray-400">Contato</p>
+                <h2 class="text-2xl sm:text-[1.6rem] font-semibold text-primary">
+                  Fale com a RECOMEX
+                </h2>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  Envie sua solicitação de cotação, dúvida ou necessidade específica. Nosso time
+                  comercial está pronto para atender empresas de todos os portes em São Luís e região.
+                </p>
+              </div>
+
+              <div class="space-y-4 text-sm text-gray-700">
+                <div>
+                  <div class="text-xs font-semibold text-softBlack uppercase tracking-[0.16em]">
+                    RECOMEX LTDA
+                  </div>
+                  <p class="mt-1 leading-relaxed">
+                    Distribuidora de Suprimentos Comerciais<br />
+                    Rua Dezenove, Cohaserma 2, Casa 10<br />
+                    São Luís – MA
+                  </p>
+                </div>
+                <div class="space-y-1">
+                  <p>
+                    <span class="text-xs font-semibold text-softBlack uppercase tracking-[0.16em]">WhatsApp</span><br />
+                    <a
+                      href="https://wa.me/5598988110147"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-softBlack underline underline-offset-4 decoration-lightGray hover:decoration-softBlack"
+                    >
+                      (98) 98811-0147
+                    </a>
+                  </p>
+                  <p>
+                    <span class="text-xs font-semibold text-softBlack uppercase tracking-[0.16em]">E-mail</span><br />
+                    <a
+                      href="mailto:jsbl14@hotmail.com"
+                      class="text-softBlack underline underline-offset-4 decoration-lightGray hover:decoration-softBlack"
+                    >
+                      jsbl14@hotmail.com
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="space-y-3">
+                <div class="text-xs font-semibold text-softBlack uppercase tracking-[0.16em]">
+                  Localização
+                </div>
+                <div class="border border-lightGray rounded-xl overflow-hidden bg-white">
+                  <!-- Google Maps iframe -->
+                  <iframe
+                    title="Mapa RECOMEX LTDA"
+                    src="https://www.google.com/maps?q=Rua%20Dezenove%2C%20Cohaserma%202%2C%20Casa%2010%2C%20S%C3%A3o%20Lu%C3%ADs%20-%20MA&output=embed"
+                    width="100%"
+                    height="220"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Formulário de contato / orçamento -->
+            <div id="form-orcamento" class="border border-lightGray rounded-2xl p-5 sm:p-6 bg-white">
+              <div class="mb-4 space-y-1">
+                <h3 class="text-sm font-semibold text-softBlack">
+                  Formulário de Contato e Orçamento
+                </h3>
+                <p class="text-xs text-gray-600">
+                  Preencha os dados abaixo para agilizar o atendimento. Seus dados serão enviados
+                  para nossa equipe via WhatsApp e e-mail.
+                </p>
+              </div>
+              <form id="contact-form" class="space-y-4">
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div class="space-y-1.5">
+                    <label for="nome" class="block text-xs text-gray-700">Nome</label>
+                    <input
+                      id="nome"
+                      name="nome"
+                      type="text"
+                      class="w-full h-9 rounded-md border border-lightGray px-3 text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
+                      placeholder="Seu nome completo"
+                      required
+                    />
+                  </div>
+                  <div class="space-y-1.5">
+                    <label for="empresa" class="block text-xs text-gray-700">Empresa</label>
+                    <input
+                      id="empresa"
+                      name="empresa"
+                      type="text"
+                      class="w-full h-9 rounded-md border border-lightGray px-3 text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
+                      placeholder="Razão social ou nome fantasia"
+                    />
+                  </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div class="space-y-1.5">
+                    <label for="telefone" class="block text-xs text-gray-700">Telefone / WhatsApp</label>
+                    <input
+                      id="telefone"
+                      name="telefone"
+                      type="tel"
+                      class="w-full h-9 rounded-md border border-lightGray px-3 text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
+                      placeholder="(DDD) 00000-0000"
+                      required
+                    />
+                  </div>
+                  <div class="space-y-1.5">
+                    <label for="email" class="block text-xs text-gray-700">E-mail</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      class="w-full h-9 rounded-md border border-lightGray px-3 text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
+                      placeholder="seuemail@empresa.com.br"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="space-y-1.5">
+                  <label for="mensagem" class="block text-xs text-gray-700">Mensagem</label>
+                  <textarea
+                    id="mensagem"
+                    name="mensagem"
+                    rows="4"
+                    class="w-full rounded-md border border-lightGray px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary resize-y min-h-[120px]"
+                    placeholder="Descreva brevemente o que você precisa, produtos de interesse, prazos e qualquer outra informação relevante."
+                    required
+                  ></textarea>
+                </div>
+                <div class="space-y-2 pt-1">
+                  <button
+                    type="submit"
+                    class="w-full inline-flex items-center justify-center h-10 px-4 rounded-full bg-primary text-white text-[11px] font-medium tracking-[0.16em] uppercase hover:bg-black transition-colors"
+                  >
+                    Enviar dados para WhatsApp e e-mail
+                  </button>
+                  <p class="text-[11px] text-gray-400 leading-relaxed">
+                    Ao enviar, o WhatsApp será aberto com uma mensagem pré-preenchida e também
+                    será gerado um e-mail com o mesmo conteúdo para <span class="underline">jsbl14@hotmail.com</span>.
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 border-t border-lightGray">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[11px] text-gray-500">
+          <div class="space-y-1">
+            <p class="text-xs font-semibold text-softBlack uppercase tracking-[0.16em]">
+              RECOMEX LTDA
+            </p>
+            <p>
+              Distribuidora de Suprimentos Comerciais – São Luís – MA<br />
+              Focada em suprir comércios, redes e empresas com agilidade e confiabilidade.
+            </p>
+          </div>
+          <div class="space-y-1 sm:text-right">
+            <p>CNPJ e demais dados podem ser incluídos aqui.</p>
+            <p class="text-[10px] text-gray-400">
+              Site institucional e catálogo para uso corporativo, sem venda online.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript do carrinho e interações -->
+    <script>
+      (function () {
+        const cart = new Set();
+
+        function updateCartCount() {
+          const countElement = document.getElementById("cart-count");
+          countElement.textContent = cart.size;
+        }
+
+        function getProductNameById(id) {
+          const el = document.querySelector('[data-product-id="' + id + '"]');
+          return el ? el.getAttribute("data-product-name") || "" : "";
+        }
+
+        function renderCartList() {
+          const list = document.getElementById("cart-items");
+          const emptyLabel = document.getElementById("cart-empty-label");
+
+          list.innerHTML = "";
+
+          if (cart.size === 0) {
+            emptyLabel.textContent = "Nenhum produto na cotação ainda.";
+            emptyLabel.classList.remove("hidden");
+            return;
+          }
+
+          emptyLabel.textContent = cart.size + " produto(s) na cotação.";
+          emptyLabel.classList.remove("hidden");
+
+          Array.from(cart).forEach(function (productId) {
+            const name = getProductNameById(productId) || productId;
+
+            const li = document.createElement("li");
+            li.className = "py-2 flex items-center justify-between gap-2";
+
+            const infoDiv = document.createElement("div");
+            infoDiv.className = "flex-1";
+
+            const title = document.createElement("p");
+            title.className = "text-xs font-medium text-softBlack";
+            title.textContent = name;
+
+            const hint = document.createElement("p");
+            hint.className = "text-[11px] text-gray-400";
+            hint.textContent = "Sem quantidade e sem preço. Detalhes serão alinhados na cotação.";
+
+            infoDiv.appendChild(title);
+            infoDiv.appendChild(hint);
+
+            const removeBtn = document.createElement("button");
+            removeBtn.type = "button";
+            removeBtn.className =
+              "flex-shrink-0 inline-flex items-center justify-center h-7 px-3 rounded-full border border-lightGray text-[11px] text-gray-600 hover:border-softBlack hover:text-softBlack transition-colors";
+            removeBtn.textContent = "Remover";
+            removeBtn.addEventListener("click", function () {
+              cart.delete(productId);
+              updateCartCount();
+              renderCartList();
+            });
+
+            li.appendChild(infoDiv);
+            li.appendChild(removeBtn);
+
+            list.appendChild(li);
+          });
+        }
+
+        function getCartProductNames() {
+          if (cart.size === 0) return [];
+          return Array.from(cart).map(function (id) {
+            return getProductNameById(id) || id;
+          });
+        }
+
+        function buildQuoteMessageForWhatsApp() {
+          const products = getCartProductNames();
+          var message = "Olá, gostaria de solicitar uma cotação para os seguintes produtos:%0A%0A";
+
+          if (products.length === 0) {
+            message += "- Produto a definir%0A";
+          } else {
+            products.forEach(function (name) {
+              message += "- " + encodeURIComponent(name) + "%0A";
+            });
+          }
+
+          message += "%0AAguardo retorno.";
+          return message;
+        }
+
+        function buildQuoteMessagePlain(products) {
+          let message = "Olá, gostaria de solicitar uma cotação para os seguintes produtos:%0A%0A";
+
+          if (!products || products.length === 0) {
+            message += "- Produto a definir%0A";
+          } else {
+            products.forEach(function (name) {
+              message += "- " + encodeURIComponent(name) + "%0A";
+            });
+          }
+
+          message += "%0AAguardo retorno.";
+          return message;
+        }
+
+        function handleSendWhatsAppFromCart() {
+          const baseUrl = "https://wa.me/5598988110147?text=";
+          const message = buildQuoteMessageForWhatsApp();
+          const fullUrl = baseUrl + message;
+          window.open(fullUrl, "_blank");
+        }
+
+        function handleSendEmailFromCart() {
+          const products = getCartProductNames();
+          const subject = encodeURIComponent("Solicitação de Cotação – RECOMEX");
+          let body = "Olá, gostaria de solicitar uma cotação para os seguintes produtos:%0A%0A";
+
+          if (products.length === 0) {
+            body += "- Produto a definir%0A";
+          } else {
+            products.forEach(function (name) {
+              body += "- " + encodeURIComponent(name) + "%0A";
+            });
+          }
+
+          body += "%0AAguardo retorno.";
+
+          const mailtoUrl = "mailto:jsbl14@hotmail.com?subject=" + subject + "&body=" + body;
+          window.location.href = mailtoUrl;
+        }
+
+        function handleContactFormSubmit(event) {
+          event.preventDefault();
+
+          var nome = document.getElementById("nome").value.trim();
+          var empresa = document.getElementById("empresa").value.trim();
+          var telefone = document.getElementById("telefone").value.trim();
+          var email = document.getElementById("email").value.trim();
+          var mensagem = document.getElementById("mensagem").value.trim();
+
+          var header =
+            "Dados de contato:%0A" +
+            "Nome: " +
+            encodeURIComponent(nome) +
+            "%0A" +
+            "Empresa: " +
+            encodeURIComponent(empresa || "-") +
+            "%0A" +
+            "Telefone: " +
+            encodeURIComponent(telefone) +
+            "%0A" +
+            "E-mail: " +
+            encodeURIComponent(email) +
+            "%0A%0A";
+
+          var msgText =
+            "Mensagem:%0A" + encodeURIComponent(mensagem) + "%0A%0A";
+
+          var products = getCartProductNames();
+          var productsText = "";
+          if (products.length > 0) {
+            productsText = "Produtos já adicionados à cotação:%0A%0A";
+            products.forEach(function (name) {
+              productsText += "- " + encodeURIComponent(name) + "%0A";
+            });
+            productsText += "%0A";
+          }
+
+          var fullMessage = header + msgText + productsText;
+
+          var whatsappBase = "https://wa.me/5598988110147?text=";
+          var whatsappUrl = whatsappBase + fullMessage;
+
+          window.open(whatsappUrl, "_blank");
+
+          var subject = encodeURIComponent("Solicitação de Cotação – RECOMEX");
+          var emailBody = fullMessage;
+          var mailtoUrl =
+            "mailto:jsbl14@hotmail.com?subject=" + subject + "&body=" + emailBody;
+
+          setTimeout(function () {
+            window.location.href = mailtoUrl;
+          }, 300);
+        }
+
+        function toggleMobileMenu() {
+          const menu = document.getElementById("mobile-menu");
+          const iconOpen = document.getElementById("menu-icon-open");
+          const iconClose = document.getElementById("menu-icon-close");
+
+          if (menu.classList.contains("hidden")) {
+            menu.classList.remove("hidden");
+            iconOpen.classList.add("hidden");
+            iconClose.classList.remove("hidden");
+          } else {
+            menu.classList.add("hidden");
+            iconOpen.classList.remove("hidden");
+            iconClose.classList.add("hidden");
+          }
+        }
+
+        function init() {
+          document.querySelectorAll(".add-to-quote").forEach(function (button) {
+            button.addEventListener("click", function () {
+              const article = button.closest("[data-product-id]");
+              if (!article) return;
+              const id = article.getAttribute("data-product-id");
+              if (!id) return;
+
+              cart.add(id);
+              updateCartCount();
+              renderCartList();
+
+              const section = document.getElementById("carrinho");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+            });
+          });
+
+          const cartButton = document.getElementById("cart-button");
+          if (cartButton) {
+            cartButton.addEventListener("click", function () {
+              const section = document.getElementById("carrinho");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+            });
+          }
+
+          const sendWhatsAppBtn = document.getElementById("send-whatsapp");
+          const sendEmailBtn = document.getElementById("send-email");
+          if (sendWhatsAppBtn) {
+            sendWhatsAppBtn.addEventListener("click", handleSendWhatsAppFromCart);
+          }
+          if (sendEmailBtn) {
+            sendEmailBtn.addEventListener("click", handleSendEmailFromCart);
+          }
+
+          const form = document.getElementById("contact-form");
+          if (form) {
+            form.addEventListener("submit", handleContactFormSubmit);
+          }
+
+          const menuToggle = document.getElementById("menu-toggle");
+          if (menuToggle) {
+            menuToggle.addEventListener("click", toggleMobileMenu);
+          }
+
+          document.querySelectorAll("#mobile-menu a[href^='#']").forEach(function (link) {
+            link.addEventListener("click", function () {
+              const menu = document.getElementById("mobile-menu");
+              const iconOpen = document.getElementById("menu-icon-open");
+              const iconClose = document.getElementById("menu-icon-close");
+
+              menu.classList.add("hidden");
+              iconOpen.classList.remove("hidden");
+              iconClose.classList.add("hidden");
+            });
+          });
+
+          updateCartCount();
+          renderCartList();
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", init);
+        } else {
+          init();
+        }
+      })();
+    </script>
+  </body>
+</html>
